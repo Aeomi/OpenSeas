@@ -1,0 +1,44 @@
+{
+  "main": "dist/server.js",
+  "name": "openseas",
+  "version": "0.1.0",
+  "description": "OpenSeas!",
+  "author": "Aeomi",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "bugs": {
+    "url": "https://github.com/Aeomi/OpenSeas/issues"
+  },
+  "homepage": "https://github.com/Aeomi/OpenSeas",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "socket.io": "^1.4.8"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.13.6",
+    "jspm": "^0.16.39"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "public"
+    },
+    "dependencies": {
+      "socket.io": "npm:socket.io@^1.4.8",
+      "ts": "github:frankwallis/plugin-typescript@^4.0.16"
+    },
+    "devDependencies": {
+      "typescript": "npm:typescript@^1.6.2"
+    }
+  },
+  "scripts": {
+    "bundle": "jspm bundle src/main --inject --minify",
+    "bundle-sfx": "jspm bundle-sfx src/main public/bundle.js --minify",
+    "unbundle": "jspm unbundle"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Aeomi/OpenSeas.git"
+  }
+}
