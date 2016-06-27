@@ -2,6 +2,7 @@
   "main": "dist/server.js",
   "name": "openseas",
   "version": "0.1.0",
+  "build": "dev",
   "description": "OpenSeas!",
   "author": "Aeomi",
   "license": "SEE LICENSE IN LICENSE.txt",
@@ -11,6 +12,7 @@
   "homepage": "https://github.com/Aeomi/OpenSeas",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "colors": "^1.1.2",
     "express": "^4.14.0",
     "socket.io": "^1.4.8"
   },
@@ -18,7 +20,8 @@
     "gulp": "^3.9.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^2.13.6",
-    "jspm": "^0.16.39"
+    "jspm": "^0.16.39",
+    "nodemon": "^1.9.2"
   },
   "jspm": {
     "directories": {
