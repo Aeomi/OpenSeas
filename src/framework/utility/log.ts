@@ -1,7 +1,6 @@
 let colorjs = require("colors");
 
 
-
 interface TermColors {
     title:string;
     text:string,

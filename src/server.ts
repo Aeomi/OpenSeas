@@ -10,16 +10,16 @@ import {log, Colors}	from "./framework/utility/log";
 |	Express server configuration and setup
 | ----------------------------------------- */
 
-const PORT_NUMBER:number 	= process.env.PORT || 8080;
-const DEBUG_ENABLED:boolean = true;
+const PORT_NUMBER:number 		= process.env.PORT || 8080;
+const DEBUG_ENABLED:boolean 	= true;
 
-const PACKAGE_JSON:any 	 = JSON.parse(fileSystem.readFileSync("../package.json", 'utf8'));
-const AOS_VERSION:string = PACKAGE_JSON.version; //TODO: Send the version to the client
+const PACKAGE_JSON:any 	 		= JSON.parse(fileSystem.readFileSync("../package.json", 'utf8'));
+const AOS_VERSION:string 		= PACKAGE_JSON.version; //TODO: Send the version to the client
 	//have the client display it in the page title
-const AOS_BUILD:string	 = PACKAGE_JSON.build;
+const AOS_BUILD:string	 		= PACKAGE_JSON.build;
 
-const app:express.Application = express();
-const server:http.Server 	  = http.createServer(<any>app);
+const app:express.Application 	= express();
+const server:http.Server 	  	= http.createServer(<any>app);
 
 
 /* ---------------------
