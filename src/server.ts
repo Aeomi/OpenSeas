@@ -3,7 +3,9 @@ import * as http        from "http";
 import * as bodyParser  from "body-parser";
 import * as SocketIO    from "socket.io";
 import * as fileSystem  from "fs";
-import {log, Colors}	from "./framework/utility/log";
+
+import Program 			from "./framework/Program";
+import {Colors, log}	from "./framework/utility/log";
 
 
 /* -----------------------------------------
@@ -49,15 +51,16 @@ server.listen(PORT_NUMBER, function() {
 
 function main():void {
 	
-	//TODO: Create an instance of Framework/Program
-			//	Init & Run Program
-	
 	log(
 		Colors.aos, 	"\n\n[AOS] ",
 		Colors.title, 	"Initialising AOS serverside framework...\n",
 		Colors.indent, 	`\t- AOS version:\t${AOS_VERSION}\n`,
 		Colors.indent, 	`\t- AOS build:\t${AOS_BUILD}\n`
 	);
+	
+	let program = new Program();
+	program.init();
+	program.run();
 	
 }
 
