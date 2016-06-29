@@ -20,7 +20,7 @@ export const Colors:TermColors = {
 colorjs.setTheme(Colors);
 
 
-export function log(...colorTextPairs):void {
+export function log(...colorTextPairs:Array<any>):void {
     
     if (colorTextPairs.length % 2 != 0)
         throw new Error("Called log with non-even number of arguments");
