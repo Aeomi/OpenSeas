@@ -3,6 +3,8 @@ import * as http        from "http";
 import * as bodyParser  from "body-parser";
 import * as SocketIO    from "socket.io";
 import * as fileSystem  from "fs";
+import * as favicon 	from "serve-favicon";
+// var favicon = require("serve-favicon");
 
 import Program 			from "./framework/Program";
 import {Colors, log}	from "./framework/utility/log";
@@ -23,14 +25,13 @@ const AOS_BUILD:string	 		= PACKAGE_JSON.build;
 const app:express.Application 	= express();
 const server:http.Server 	  	= http.createServer(<any>app);
 
-
 /* ---------------------
 |	Set up middleware
 | --------------------- */
 
+app.use(favicon(__dirname + "/../public/resources/favicon.ico"));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/../public"));
-
 
 /* -----------------------
 |	Bind server to port
@@ -61,6 +62,7 @@ function main():void {
 	let program = new Program();
 	program.init();
 	program.run();
+	program.getHooks().setHook("");
 	
 }
 

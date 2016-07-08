@@ -1,8 +1,8 @@
-// CLIENTSIDE ENTRY POINT
+import Program from "./framework/Program";
 
 function main():void {
     
-    console.log("Hello clientside");
+    
 
 }
 

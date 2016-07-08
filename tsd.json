@@ -9,22 +9,25 @@
       "commit": "2f4ad65f54e6ed32bf395c6ba93284c07b5b4d7f"
     },
     "express/express.d.ts": {
-      "commit": "2f4ad65f54e6ed32bf395c6ba93284c07b5b4d7f"
+      "commit": "a15f08332763d2e41d9787cec4e8324c9e5870dc"
     },
     "serve-static/serve-static.d.ts": {
-      "commit": "2f4ad65f54e6ed32bf395c6ba93284c07b5b4d7f"
+      "commit": "a15f08332763d2e41d9787cec4e8324c9e5870dc"
     },
     "express-serve-static-core/express-serve-static-core.d.ts": {
-      "commit": "2f4ad65f54e6ed32bf395c6ba93284c07b5b4d7f"
+      "commit": "a15f08332763d2e41d9787cec4e8324c9e5870dc"
     },
     "node/node.d.ts": {
-      "commit": "2743ece76d3b31df635afdc39c63ed13acf393ad"
+      "commit": "a15f08332763d2e41d9787cec4e8324c9e5870dc"
     },
     "mime/mime.d.ts": {
-      "commit": "2f4ad65f54e6ed32bf395c6ba93284c07b5b4d7f"
+      "commit": "a15f08332763d2e41d9787cec4e8324c9e5870dc"
     },
     "socket.io/socket.io.d.ts": {
       "commit": "2743ece76d3b31df635afdc39c63ed13acf393ad"
+    },
+    "serve-favicon/serve-favicon.d.ts": {
+      "commit": "a15f08332763d2e41d9787cec4e8324c9e5870dc"
     }
   }
 }

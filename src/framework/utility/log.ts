@@ -7,6 +7,7 @@ interface TermColors {
     indent:string;
     aos:string;
     error:string;
+    debug:string;
 }
 
 export const Colors:TermColors = {
@@ -14,12 +15,16 @@ export const Colors:TermColors = {
     text    : 'white',
 	indent  : 'grey',
     aos     : 'bold',
-	error   : 'red'
+	error   : 'red',
+    debug   : 'bgRed'
 };
 
 colorjs.setTheme(Colors);
 
 
+/**
+ * Log to the console.
+ */
 export function log(...colorTextPairs:Array<any>):void {
     
     if (colorTextPairs.length % 2 != 0)
