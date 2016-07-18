@@ -4,7 +4,6 @@ import * as bodyParser  from "body-parser";
 import * as SocketIO    from "socket.io";
 import * as fileSystem  from "fs";
 import * as favicon 	from "serve-favicon";
-// var favicon = require("serve-favicon");
 
 import Program 			from "./framework/Program";
 import {Colors, log}	from "./framework/utility/log";
@@ -59,11 +58,13 @@ function main():void {
 		Colors.indent, 	`\t- AOS build:\t${AOS_BUILD}\n`
 	);
 	
-	let program = new Program();
+	let program = Program.getInstance();
 	program.init();
 	program.run();
-	program.getHooks().setHook("");
+	program.quit();
+
 	
 }
 
 main();
+

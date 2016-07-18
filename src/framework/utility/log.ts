@@ -41,3 +41,14 @@ export function log(...colorTextPairs:Array<any>):void {
 
     console.log(result);
 }
+
+// Helper functions
+export function logDebug(fileName:string, text:string) {
+    let slicedFileName:string = fileName.slice(35);
+    
+    log(
+        Colors.debug, "[" + slicedFileName + "]",
+        Colors.text, "\t",
+        Colors.debug, text
+    );
+}

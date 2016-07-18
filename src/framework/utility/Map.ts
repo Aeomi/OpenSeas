@@ -1,4 +1,3 @@
-const __filenameS:string = __filename.slice(35);
 import {isValid} from "./validate";
 
 
