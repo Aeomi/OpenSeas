@@ -5,7 +5,7 @@ import * as SocketIO    from "socket.io";
 import * as fileSystem  from "fs";
 import * as favicon 	from "serve-favicon";
 
-import Program 			from "./framework/Program";
+import Engine 			from "./framework/Engine";
 import {Colors, log}	from "./framework/utility/log";
 
 
@@ -58,10 +58,10 @@ function main():void {
 		Colors.indent, 	`\t- AOS build:\t${AOS_BUILD}\n`
 	);
 	
-	let program = Program.getInstance();
-	program.init();
-	program.run();
-	program.quit();
+	let engine = Engine.getInstance();
+	engine.initialise();
+	engine.run();
+	engine.quit();
 
 	
 }
