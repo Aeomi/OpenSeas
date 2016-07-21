@@ -18,7 +18,7 @@
       "commit": "a15f08332763d2e41d9787cec4e8324c9e5870dc"
     },
     "node/node.d.ts": {
-      "commit": "a15f08332763d2e41d9787cec4e8324c9e5870dc"
+      "commit": "e4503bad7d13c243c38201cc0b6a15981297226d"
     },
     "mime/mime.d.ts": {
       "commit": "a15f08332763d2e41d9787cec4e8324c9e5870dc"
@@ -31,6 +31,9 @@
     },
     "colors/colors.d.ts": {
       "commit": "5b816099c3349c2e4d192ab1e37a89b7b0db8119"
+    },
+    "fs-extra/fs-extra.d.ts": {
+      "commit": "e4503bad7d13c243c38201cc0b6a15981297226d"
     }
   }
 }

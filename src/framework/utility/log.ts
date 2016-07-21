@@ -63,10 +63,10 @@ export function logDebugStatement(fileName:string, text:string) {
 	
 	if (config.DEBUG_TO_FILE) {
 		
-		file.writeFile("", text, function(error:NodeJS.ErrnoException) {
-			
-			
-			
+		file.createDirectory("../logs/", function() {
+			file.writeFile("../logs/debug.log", text, function(error:NodeJS.ErrnoException) {
+				if (error != undefined) throw error;			
+			});
 		});
 		
 	}
