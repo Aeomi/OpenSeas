@@ -1,7 +1,7 @@
 {
   "main": "dist/server.js",
   "name": "openseas",
-  "version": "0.2.5",
+  "version": "0.2.7",
   "build": "dev",
   "description": "OpenSeas!",
   "author": "Aeomi",
