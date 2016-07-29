@@ -34,6 +34,9 @@
     },
     "fs-extra/fs-extra.d.ts": {
       "commit": "e4503bad7d13c243c38201cc0b6a15981297226d"
+    },
+    "typescript-stl/typescript-stl.d.ts": {
+      "commit": "46ed88240c5954186ae49729ad740801d1825a35"
     }
   }
 }

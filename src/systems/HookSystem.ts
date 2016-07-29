@@ -23,33 +23,33 @@ import {Map, IMap}    		from "../framework/utility/Map";
 */
 
 
-class Hook {
+class HookSystem {
 
     private static _instansiated:boolean = false;
-    private static _instance:Hook;
+    private static _instance:HookSystem;
     
     private eventHooks:Map<Map<Function>>;
     
     
     public constructor() {
-        if (Hook._instansiated) 
+        if (HookSystem._instansiated) 
             throw exceptions.exclusiveInstance;
         
         this.eventHooks = new Map<Map<Function>>();
         
-        Hook._instansiated = true;
+        HookSystem._instansiated = true;
     }
     
 
-    public static getInstance():Hook {
-        if (!Hook._instansiated) {
+    public static getInstance():HookSystem {
+        if (!HookSystem._instansiated) {
             
                 logDebugStatement(__filename, "Lazily generating singleton instance");
                 
-            Hook._instance = new Hook();
+            HookSystem._instance = new HookSystem();
         }
         
-        return Hook._instance;
+        return HookSystem._instance;
     }
 
 
@@ -122,4 +122,4 @@ class Hook {
 
 }
 
-export default Hook;
+export default HookSystem;
