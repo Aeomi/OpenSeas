@@ -4,7 +4,7 @@ import {
     logDebugStatement,	
     log
 }						from "./utility/log";
-import Hook 			from "../systems/Hook";
+import Hook 			from "../systems/HookSystem";
 
 
 enum ENGINE_STATES {
