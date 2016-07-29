@@ -1,4 +1,4 @@
 
 export function isValid(data:any):boolean {
-	return typeof(data) !== "undefined";
+    return typeof(data) !== "undefined";
 }

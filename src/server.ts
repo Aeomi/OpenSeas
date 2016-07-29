@@ -18,7 +18,7 @@ const DEBUG_ENABLED:boolean 	= true;
 
 const PACKAGE_JSON:any 	 		= JSON.parse(fileSystem.readFileSync("../package.json", 'utf8'));
 const AOS_VERSION:string 		= PACKAGE_JSON.version; //TODO: Send the version to the client
-	//have the client display it in the page title
+    //have the client display it in the page title
 const AOS_BUILD:string	 		= PACKAGE_JSON.build;
 
 const app:express.Application 	= express();
@@ -38,10 +38,10 @@ app.use(express.static(__dirname + "/../public"));
 
 const io = SocketIO.listen(server);
 server.listen(PORT_NUMBER, function() {
-	log(
-		Colors.aos, "[AOS] ", 
-		Colors.text, `Server bound to port: ${PORT_NUMBER}`
-	);
+    log(
+        Colors.aos, "[AOS] ", 
+        Colors.text, `Server bound to port: ${PORT_NUMBER}`
+    );
 });
 
 
@@ -50,20 +50,20 @@ server.listen(PORT_NUMBER, function() {
 | ----------------------- */
 
 function main():void {
-	
-	log(
-		Colors.aos, 	"\n\n[AOS] ",
-		Colors.title, 	"Initialising AOS serverside framework...\n",
-		Colors.indent, 	`\t- AOS version:\t${AOS_VERSION}\n`,
-		Colors.indent, 	`\t- AOS build:\t${AOS_BUILD}\n`
-	);
-	
-	let engine = Engine.getInstance();
-	engine.initialise();
-	engine.run();
-	engine.quit();
+    
+    log(
+        Colors.aos, 	"\n\n[AOS] ",
+        Colors.title, 	"Initialising AOS serverside framework...\n",
+        Colors.indent, 	`\t- AOS version:\t${AOS_VERSION}\n`,
+        Colors.indent, 	`\t- AOS build:\t${AOS_BUILD}\n`
+    );
+    
+    let engine = Engine.getInstance();
+    engine.initialise();
+    engine.run();
+    engine.quit();
 
-	
+    
 }
 
 main();
