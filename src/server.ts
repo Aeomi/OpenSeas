@@ -16,7 +16,7 @@ import {Colors, log}	from "./framework/utility/log";
 const PORT_NUMBER:number 		= process.env.PORT || 8080;
 const DEBUG_ENABLED:boolean 	= true;
 
-const PACKAGE_JSON:any 	 		= JSON.parse(fileSystem.readFileSync("../package.json", 'utf8'));
+const PACKAGE_JSON:any 	 		= JSON.parse(fileSystem.readFileSync("package.json", 'utf8'));
 const AOS_VERSION:string 		= PACKAGE_JSON.version; //TODO: Send the version to the client
     //have the client display it in the page title
 const AOS_BUILD:string	 		= PACKAGE_JSON.build;

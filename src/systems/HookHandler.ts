@@ -6,7 +6,6 @@ import {
 }   						from "../framework/utility/log";
 import {Map, IMap}    		from "../framework/utility/Map";
 
-//  TODO: convert from any to map
 
 /*
     callbacks = {
@@ -23,33 +22,33 @@ import {Map, IMap}    		from "../framework/utility/Map";
 */
 
 
-class HookSystem {
+class HookHandler {
 
     private static _instansiated:boolean = false;
-    private static _instance:HookSystem;
+    private static _instance:HookHandler;
     
     private eventHooks:Map<Map<Function>>;
     
     
     public constructor() {
-        if (HookSystem._instansiated) 
+        if (HookHandler._instansiated) 
             throw exceptions.exclusiveInstance;
         
         this.eventHooks = new Map<Map<Function>>();
         
-        HookSystem._instansiated = true;
+        HookHandler._instansiated = true;
     }
     
 
-    public static getInstance():HookSystem {
-        if (!HookSystem._instansiated) {
+    public static getInstance():HookHandler {
+        if (!HookHandler._instansiated) {
             
                 logDebugStatement(__filename, "Lazily generating singleton instance");
                 
-            HookSystem._instance = new HookSystem();
+            HookHandler._instance = new HookHandler();
         }
         
-        return HookSystem._instance;
+        return HookHandler._instance;
     }
 
 
@@ -91,10 +90,13 @@ class HookSystem {
     
     /**
      * Trigger an engine event (should be used statically)
-     * @eventName The name of the event (document on http://github.com/Aeomi/OpenSeas/wiki)
+     * @eventName The name of the event (document on http://github.com/Aeomi/OpenSeas/wiki/Hooks)
      */
     public triggerEvent(eventName:string, ...args:any[]):void {
-        logDebugStatement(__filename, `Attempting to trigger all callbacks on ${eventName} event`);
+        
+        if (!eventName.toLowerCase().endsWith("update")) {   // Do not debug any events ending in "update"
+            logDebugStatement(__filename, `Attempting to trigger all callbacks on ${eventName} event`);
+        }
         
         // Attempt to gather the hooks under a given event
         if (this.eventHooks.containsKey(eventName)) {
@@ -122,4 +124,4 @@ class HookSystem {
 
 }
 
-export default HookSystem;
+export default HookHandler;

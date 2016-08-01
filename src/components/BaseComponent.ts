@@ -1,11 +1,11 @@
 
-export interface IComponent {
+export interface IBaseComponent {
     setId(id:number):void;
     getId():number;
 }
 
 
-export abstract class Component implements IComponent {
+export abstract class BaseComponent implements IBaseComponent {
 
     private _id:number;
 

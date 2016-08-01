@@ -55,7 +55,7 @@ export function log(...colorTextPairs:Array<any>):void {
  *      any part of the engine from the debug config option
  */
 export function logDebugStatement(fileName:string, text:string) {
-    let slicedFileName:string = fileName.slice(35);
+    let slicedFileName:string = fileName.slice(40);
     
     if (config.DEBUG_TO_TERMINAL) {
         log(Colors.debug, `\n[${slicedFileName}]\n\t${text}`);

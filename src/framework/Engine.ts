@@ -1,10 +1,16 @@
+// Entities
+import {Frame} from "./../entities/gui/Frame"
+// Systems
+import HookHandler 		from "../systems/HookHandler";
+import EntityHandler    from "../systems/EntityHandler";
+import ComponentHandler from "../systems/ComponentHandler"
+// Utility
 import * as exceptions 	from "./utility/exceptions";
 import {
     Colors, 
     logDebugStatement,	
     log
 }						from "./utility/log";
-import Hook 			from "../systems/HookSystem";
 
 
 enum ENGINE_STATES {
@@ -21,7 +27,7 @@ class Engine {
     
     public static STATES = ENGINE_STATES;
     
-    
+
     private _state:ENGINE_STATES;
     
     
@@ -45,13 +51,12 @@ class Engine {
 
 
     // Performed upon the single instance:
-
     
     public setState(state:ENGINE_STATES):void {
         logDebugStatement(__filename, `Setting Engine state from ${this._state} to ${state}`);
         this._state = state;
         
-        Hook.getInstance().triggerEvent("EngineStateChange", this.getState(), state);
+        HookHandler.getInstance().triggerEvent("EngineStateChange", this.getState(), state);
     }
     
     
@@ -62,11 +67,17 @@ class Engine {
 
     public initialise():void {
         logDebugStatement(__filename, "Engine initialising");
-        
-        Hook.getInstance().triggerEvent("EngineInit");
-        
+
+        HookHandler.getInstance().triggerEvent("EngineInit");
+
         // Initialise sub-systems
-        // ----
+        EntityHandler.getInstance();
+        ComponentHandler.getInstance();
+
+        let x:Frame = new Frame();
+        let y:Frame = new Frame();
+
+        console.log(x, y);
     }
 
 
@@ -75,19 +86,19 @@ class Engine {
         
         this.setState(ENGINE_STATES.RUNNING);
         
-        while (this.getState())
+        //while (this.getState())
             this.update();
     }
     
     
     public quit():void {
         logDebugStatement(__filename, "Engine quitting");
-        Hook.getInstance().triggerEvent("EngineQuitting");
+        HookHandler.getInstance().triggerEvent("EngineQuitting");
     }
     
     
     public update():void {
-        Hook.getInstance().triggerEvent("EngineUpdate");
+        HookHandler.getInstance().triggerEvent("EngineUpdate");
     }
 
 }

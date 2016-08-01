@@ -1,13 +1,13 @@
 // Libraries
-import {HashMap}                from "typescript-stl";
+import {HashMap}                    from "typescript-stl";
 // Components
-import {Entity, IEntity}     from "../entities/Entity";
+import {BaseEntity}                 from "../entities/BaseEntity";
 // Utility
-import * as exceptions          from "../framework/utility/exceptions";
+import * as exceptions              from "../framework/utility/exceptions";
 import {
     logDebugStatement, 
     logDebugIndent
-}   						    from "../framework/utility/log";
+}   						        from "../framework/utility/log";
 
 
 class EntityHandler {
@@ -15,14 +15,14 @@ class EntityHandler {
     private static _instansiated:boolean = false;
     private static _instance:EntityHandler;
 
-    private _entityMap:HashMap<number, IEntity>;
+    private _entityMap:HashMap<number, BaseEntity>;
 
 
     public constructor() {
         if (EntityHandler._instansiated) 
             throw exceptions.exclusiveInstance;
 
-        this._entityMap = new HashMap<number, IEntity>();
+        this._entityMap = new HashMap<number, BaseEntity>();
 
         EntityHandler._instansiated = true;
     }
@@ -40,20 +40,29 @@ class EntityHandler {
 
     // Performed upon the single instance:
 
-    public getEntityMap():HashMap<number, IEntity> {
+    private _getEntityMap():HashMap<number, BaseEntity> {
         return this._entityMap;
     }
 
 
-    public setEntity(id:number, entity:IEntity) {
-        this.getEntityMap().set(id, entity);
+    private _setEntity(id:number, entity:BaseEntity):void {
+        this._getEntityMap().set(id, entity);
     }
 
 
-    public getEntity(id:number):IEntity {
-        return this.getEntityMap().get(id);
+    private _getEntity(id:number):BaseEntity {
+        return this._getEntityMap().get(id);
     }
-    
+
+
+    public registerEntity(entity:BaseEntity):number {
+        let id:number = this._getEntityMap().size() + 0;
+        this._setEntity(id, entity);
+
+        logDebugStatement(__filename, `Entity self-registered: #${id}`);
+        return id;
+    }
+
 }
 
 
