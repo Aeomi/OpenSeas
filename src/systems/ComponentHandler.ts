@@ -12,7 +12,7 @@ import {
 // Locally typedef long hashmap templatic type
 type ComponentList      = std.HashMap<number, IBaseComponent>;
 type ComponentListsMap  = std.HashMap<string, ComponentList>;
-s
+
 
 class ComponentHandler {
 
@@ -43,28 +43,50 @@ class ComponentHandler {
     }
 
 
-    private _getComponentMap():ComponentListsMap {
+    // Performed on the single instance
+
+
+    private _getComponentListsMap():ComponentListsMap {
         return this._componentListsMap;
     }
 
 
+    private _getComponentList(componentClass:string):ComponentList {
+        return this._getComponentListsMap().get(componentClass);
+    }
+
+
+    private _createComponentList(componentClass:string) {
+        let emptyComponentList = new std.HashMap<number, IBaseComponent>();
+        this._getComponentListsMap().set(componentClass, emptyComponentList)
+    }
+
+
+    private _componentClassExists(componentClass:string):boolean {
+        return this._getComponentListsMap().has(componentClass);
+    }
+
+
+    private _getComponent(componentClass:string, id:number):IBaseComponent {
+        return this._getComponentList(componentClass).get(id);
+    }
+
+
     private _setComponent(componentClass:string, id:number, component:IBaseComponent):void {
-        
+        // Ensure the componentList exists
+        if (!this._componentClassExists(componentClass))
+            this._createComponentList(componentClass);
 
-        this._getComponentMap().set(componentClass, )
+        this._getComponentList(componentClass).set(id, component);
     }
 
-
-    private _getComponent(componentType:string, id:number):IBaseComponent {
-        return this._getComponentMap().get(componentType).get(id);
-    }
 
     // For components to request self-registration
-    public registerComponent(component:IBaseComponent):void {
+    public registerComponent(componentClass:string, component:IBaseComponent):void {
         let id:number = component.getId();
-        this._setComponent(id, component);
+        this._setComponent(componentClass, id, component);
         
-        logDebugStatement(__filename, `Component was registered to entity: #${id}`);
+        logDebugStatement(__filename, `A ${componentClass} component was registered to entity: #${id}`);
     }
 
 }
