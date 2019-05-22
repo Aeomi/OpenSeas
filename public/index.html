@@ -2,21 +2,26 @@
 
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>OpenSeas v0.0.0</title>
-    <style>
-        #game-canvas {
-            text-align: center;
-            border: 2px dotted black;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>OpenSeas v?.?.?</title>
+	
+	<link rel="shortcut icon" type="image/x-icon" href="/resources/favicon.ico"/>
+		
+	<style>
+		#game-canvas {
+			display: block;
+			margin: 0 auto;
+			border: 2px dotted hotpink;
+		}
+	</style>
 </head>
 <body>
-    
-    <canvas id="game-canvas" tabindex="1"></canvas>
-    
-    <script src="jspm_packages/system.js"></script>
-    <script src="config.js"></script>
-    <script>System.import("src/main.ts");</script>
+	
+	<canvas id="game-canvas" width="0" height="0"></canvas>
+	
+	<script src="jspm_packages/system.js"></script>
+	<script src="config.js"></script>
+	<script>System.import("src/main.ts");</script>
 </body>
 </html>

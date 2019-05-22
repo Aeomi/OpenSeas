@@ -2,38 +2,68 @@ import * as express     from "express";
 import * as http        from "http";
 import * as bodyParser  from "body-parser";
 import * as SocketIO    from "socket.io";
+import * as fileSystem  from "fs";
+import * as favicon 	from "serve-favicon";
+
+import Engine 			from "./framework/Engine";
+import {Colors, log}	from "./framework/utility/log";
 
 
-// Configuration
-const PORT_NUMBER:number = process.env.PORT || 8080;
-const DEBUG_ENABLED:boolean = true;
+/* -----------------------------------------
+|	Express server configuration and setup
+| ----------------------------------------- */
 
-const app = express();
-const server:http.Server = http.createServer(app);
-const io = SocketIO.listen(server);
+const PORT_NUMBER:number 		= process.env.PORT || 8080;
+const DEBUG_ENABLED:boolean 	= true;
 
+const PACKAGE_JSON:any 	 		= JSON.parse(fileSystem.readFileSync("package.json", 'utf8'));
+const AOS_VERSION:string 		= PACKAGE_JSON.version; //TODO: Send the version to the client
+    //have the client display it in the page title
+const AOS_BUILD:string	 		= PACKAGE_JSON.build;
 
-// Set up Middleware
+const app:express.Application 	= express();
+const server:http.Server 	  	= http.createServer(<any>app);
+
+/* ---------------------
+|	Set up middleware
+| --------------------- */
+
+app.use(favicon(__dirname + "/../public/resources/favicon.ico"));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/../public"));
 
-// Set up server listening on port
-app.listen(8000);
+/* -----------------------
+|	Bind server to port
+| ----------------------- */
+
+const io = SocketIO.listen(server);
 server.listen(PORT_NUMBER, function() {
-	console.log("Server started: listening on port " + PORT_NUMBER);
+    log(
+        Colors.aos, "[AOS] ", 
+        Colors.text, `Server bound to port: ${PORT_NUMBER}`
+    );
 });
 
 
-
-
-//  Define entry point
+/* -----------------------
+|	Define entry point
+| ----------------------- */
 
 function main():void {
     
-    //  Create an instance of Framework/Program.
-            //  Init & Run Program
-    console.log("Hello serverside");
+    log(
+        Colors.aos, 	"\n\n[AOS] ",
+        Colors.title, 	"Initialising AOS serverside framework...\n",
+        Colors.indent, 	`\t- AOS version:\t${AOS_VERSION}\n`,
+        Colors.indent, 	`\t- AOS build:\t${AOS_BUILD}\n`
+    );
+    
+    let engine = Engine.getInstance();
+    engine.initialise();
+    engine.run();
+    engine.quit();
     
 }
 
 main();
+

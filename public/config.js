@@ -7,7 +7,7 @@ System.config({
     "module": "system",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "removeComments": false,
+    "removeComments": true,
     "sourceMap": true
   },
   paths: {
